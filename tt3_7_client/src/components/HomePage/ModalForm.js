@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import Dropdown from 'react-dropdown';
+import 'react-dropdown/style.css';
 
 const ModalForm = ({ formReturn }) => {
 
@@ -8,8 +10,11 @@ const ModalForm = ({ formReturn }) => {
     const [claimAmt, setClaimAmt] = useState(0); //To fill default value from API
     const [currency, setCurrency] = useState(""); //To fill default value from API
     const [purpose, setPurpose] = useState(""); //To fill default value from API
-    const [isFollowUp, setIsFollowUp] = useState(false); //To fill default value from API
-    const [previousClaimId, setPreviousClaimId] = useState(""); //To fill default value from API
+    //const [isFollowUp, setIsFollowUp] = useState(false); //To fill default value from API
+    //const [previousClaimId, setPreviousClaimId] = useState(""); //To fill default value from API
+
+    const currencyOptions = ['CNY', 'HKD', 'IDR', 'INR', 'JPY', 'KHR', 'KRW', 'SGD', 'TWD', 'VND']
+    const defaultOption = currencyOptions[0]
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -19,9 +24,9 @@ const ModalForm = ({ formReturn }) => {
         //    return;
         //}
 
-        if (!isFollowUp) {
-            setPreviousClaimId("")
-        }
+        //if (!isFollowUp) {
+        //    setPreviousClaimId("")
+        //}
 
         formReturn({
             firstName,
@@ -29,9 +34,7 @@ const ModalForm = ({ formReturn }) => {
             date,
             claimAmt,
             currency,
-            purpose,
-            isFollowUp,
-            previousClaimId
+            purpose
         });
 
         setFirstName('');
@@ -40,8 +43,8 @@ const ModalForm = ({ formReturn }) => {
         setClaimAmt(0);
         setCurrency('');
         setPurpose('');
-        setIsFollowUp(false);
-        setPreviousClaimId('');
+        //setIsFollowUp(false);
+        //setPreviousClaimId('');
 
     }
 
@@ -85,22 +88,27 @@ const ModalForm = ({ formReturn }) => {
             </div>
             <div className='form-control form-control-check'>
                 <label>Currency</label>
-                <input
-                    type='number'
-                    placeholder='Add claim amount'
-                    value={currency}
-                    onChange={(e) => setCurrency(e.target.value)}
-                />
+                <Dropdown
+                    options={currencyOptions}
+                    onChange={setCurrency}
+                    value={defaultOption}
+                    placeholder="Select claim amount" />;
             </div>
             <div className='form-control form-control-check'>
                 <label>Claim purpose</label>
-                <input
+                <textarea
                     type='text'
                     placeholder='Add claim purpose'
                     value={purpose}
                     onChange={(e) => setPurpose(e.target.value)}
                 />
             </div>
+            <input type='submit' value='Submit' className='btn btn-block' />
+        </form>
+    )
+}
+
+/* Removed followup
             <div className='form-control form-control-check'>
                 <label>Is follow up claim?</label>
                 <input
@@ -120,9 +128,6 @@ const ModalForm = ({ formReturn }) => {
                 />
             </div>
             }
-            <input type='submit' value='Submit' className='btn btn-block' />
-        </form>
-    )
-}
+ */
 
 export default ModalForm
