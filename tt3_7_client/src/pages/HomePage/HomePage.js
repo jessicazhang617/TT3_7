@@ -9,6 +9,11 @@ import NavBar from "../../components/NavBar/NavBar"
 
 const HomePage = () => {
 
+    const [isModalOpen, setModalIsOpen] = useState(false);
+    const toggleCreateForm = () => {
+        setModalIsOpen(!isModalOpen)
+    }
+
   return (
     <>
     <NavBar/>
