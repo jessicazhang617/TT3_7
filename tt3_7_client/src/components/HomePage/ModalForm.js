@@ -11,7 +11,8 @@ const ModalForm = ({
     defaultCurrency,
     defaultPurpose,
     title,
-    buttonText
+    buttonText,
+    claimID
 }) => {
 
 
@@ -67,6 +68,8 @@ const ModalForm = ({
             onRequestClose={() => setModalIsOpen(false)}
             contentLabel="Example Modal"
         >
+            <h1>{title}</h1>
+            <h2>Claim ID: { claimID }</h2>
         <form className='add-form' onSubmit={onSubmit}>
             <div className='form-control form-control-check'>
                 <label>Date</label>
@@ -160,7 +163,8 @@ ModalForm.defaultProps = {
     defaultCurrency: 'SGD',
     defaultPurpose: '',
     title: 'Add claims',
-    buttonText: 'Submit'
+    buttonText: 'Submit',
+    claimID: 0
 }
 
 export default ModalForm

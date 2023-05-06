@@ -22,7 +22,9 @@ const Claims = ({ status, data, toggleDelete }) => {
                 defaultDate={data.date}
                 defaultClaimAmt={data.claimAmt}
                 defaultPurpose={ data.purpose }
-                defaultCurrency={ data.currency }
+                defaultCurrency={data.currency}
+                title='Edit claims'
+                claimID={data.claim_id}
             />}
 
     </div>
