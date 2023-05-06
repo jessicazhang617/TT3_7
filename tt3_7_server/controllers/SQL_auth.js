@@ -8,9 +8,9 @@ db.connect((err) => {
 });
 
 
-export const getEmployee=(req,res)=>{
-    const {employeeId}=req.params; 
-    let sql=`select * from employee where employeeid='${employeeId}'`;
+export const loginEmployee=(req,res)=>{
+    let form=req.body;
+    let sql=`select * from employee where employeeid='${form.employeeid}'`;
     db.query(sql, (err, result) => {
         if (err) throw err;
         res.send(result);
