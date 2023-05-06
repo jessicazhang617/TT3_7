@@ -7,24 +7,29 @@ const LoginPage = () => {
     password: ''
   });
 
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleChange = (e) => {
     const {name, value} = e.target;
+    console.log({name, value});
 
     setFormDetails({
         ...formDetails,
         [name]: [value]
     });
 
-    console.log({formDetails});
-
     e.target.value = value;
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Successfully submit');
-    console.log(formDetails);
+    setErrorMessage('');
+
+    if (!formDetails.id && !formDetails.password) {
+        setErrorMessage('Fields cannot be empty');
+    }
+    console.log(`Successfully submitted: id: ${formDetails.id} 
+    password: ${formDetails.password}`);
   }
 
 
@@ -41,7 +46,10 @@ const LoginPage = () => {
                 <span>Password</span>
                 <input onChange={handleChange} name='password' type='password'></input>
             </div>
-
+            {
+                errorMessage &&
+                <span className='error_message'>{errorMessage}</span>
+            }
             <button onClick={handleSubmit} className='submit_button'>Submit</button>
         </div>
 
