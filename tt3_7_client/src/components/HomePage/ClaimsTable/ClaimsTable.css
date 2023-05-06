@@ -1,0 +1,25 @@
+.ClaimsTable {
+    background-color: aliceblue;
+    font-size:14px;
+    margin-right: 50px;
+    padding: 7px;
+    border-radius: 10px;
+    cursor: pointer;
+
+}
+
+span {
+    background-color: white;
+}
+
+h1 {
+    padding: 1rem;
+    background-color: red;
+    font-size: 1.5rem;
+}
+
+li {
+    text-align: left;
+    color: black;
+    font-size: 1rem;
+}

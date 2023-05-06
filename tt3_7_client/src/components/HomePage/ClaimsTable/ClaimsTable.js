@@ -1,14 +1,34 @@
 import './ClaimsTable.css'
+import Button from '../../Button/Button'
+import {useState} from 'react'
+
+
 
 const ClaimsTable = (props) => {
     
+    const [ifAccepted, setIfAccepted] = useState(false)
+
+    const HandleState = () => {
+        if (props.status == 'Accepted') {
+            setIfAccepted(true);
+        } else {
+            setIfAccepted(false);
+        }
+    
+    }
+
     return (
-        <div>
+        <div class={props.status}>
             <h1>{props.status}</h1>
             <span>
-                <p>Project id: {props.project_id}</p>
-                <p>Claim id: {props.claim_id}</p>
-                <p>Currency: {props.currency}</p>
+                <ul>
+                <li>Project id: {props.project_id}
+                    <Button classname='edit' buttonText='Edit'/>
+                    <Button classname='delete' buttonText='Delete'/>
+                    </li>
+                <li>Claim id: {props.claim_id}</li>
+                <li>Currency: {props.currency}</li>
+                </ul>
             </span>
         </div>
 
