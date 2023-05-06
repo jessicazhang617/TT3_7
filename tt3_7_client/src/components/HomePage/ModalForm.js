@@ -3,7 +3,7 @@ import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import './ModalForm.css';
 
-const ModalForm = ({ formReturn }) => {
+const ModalForm = ({ formReturn, setClaims}) => {
 
     const [firstName, setFirstName] = useState(""); //To fill default value from API
     const [lastName, setLastName] = useState(""); //To fill default value from API
@@ -37,15 +37,29 @@ const ModalForm = ({ formReturn }) => {
             currency,
             purpose
         });
-
+        if (date && claimAmt && currency && purpose) {
+        console.log({
+            firstName,
+            lastName,
+            date,
+            claimAmt,
+            currency,
+            purpose
+        })
         setFirstName('');
         setLastName('');
         setDate('');
         setClaimAmt(0);
         setCurrency('');
         setPurpose('');
+        } else {
+            alert('Please fill in all blanks!')
+        }
         //setIsFollowUp(false);
         //setPreviousClaimId('');
+        
+     
+        // setPersons(persons.concat(personObject.data))
 
     }
 

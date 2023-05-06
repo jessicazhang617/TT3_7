@@ -1,6 +1,5 @@
 import './ClaimsTable.css'
 import Claims from '../Claims/Claims'
-import Button from '../../Button/Button'
 import {useState, useEffect} from 'react'
 
 
@@ -26,11 +25,10 @@ const ClaimsTable = ({currStatus}) => {
         setClaims(data);
      }, [])
 
-    const toggleDelete = (project_id) => {
-        if (window.confirm(`Delete claim ${project_id}?`)) {
-        const updatedClaims = claims.filter(claims => claims.project_id !== project_id)
+    const toggleDelete = (claim_id) => {
+        if (window.confirm(`Delete claim ${claim_id}?`)) {
+        const updatedClaims = claims.filter(claims => claims.claim_id !== claim_id)
         setClaims(updatedClaims)
-        console.log('toggledelete ran')
     }
     }
 
