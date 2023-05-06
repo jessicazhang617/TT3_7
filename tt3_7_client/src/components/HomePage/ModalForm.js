@@ -3,14 +3,21 @@ import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import './ModalForm.css';
 
-const ModalForm = ({ formReturn }) => {
+const ModalForm = ({
+    formReturn,
+    defaultDate,
+    defaultClaimAmt,
+    defaultCurrency,
+    defaultPurpose
+}) => {
 
-    const [firstName, setFirstName] = useState(""); //To fill default value from API
-    const [lastName, setLastName] = useState(""); //To fill default value from API
-    const [date, setDate] = useState(""); //To fill default value from API
-    const [claimAmt, setClaimAmt] = useState(0); //To fill default value from API
-    const [currency, setCurrency] = useState(""); //To fill default value from API
-    const [purpose, setPurpose] = useState(""); //To fill default value from API
+
+    //const [firstName, setFirstName] = useState(""); //To fill default value from API
+    //const [lastName, setLastName] = useState(""); //To fill default value from API
+    const [date, setDate] = useState(defaultDate); //To fill default value from API
+    const [claimAmt, setClaimAmt] = useState(defaultClaimAmt); //To fill default value from API
+    const [currency, setCurrency] = useState(defaultCurrency); //To fill default value from API
+    const [purpose, setPurpose] = useState(defaultPurpose); //To fill default value from API
     //const [isFollowUp, setIsFollowUp] = useState(false); //To fill default value from API
     //const [previousClaimId, setPreviousClaimId] = useState(""); //To fill default value from API
 
@@ -20,69 +27,37 @@ const ModalForm = ({ formReturn }) => {
     const onSubmit = (e) => {
         e.preventDefault();
 
-        //if (!text) {
-        //    alert('Please add a task');
-        //    return;
-        //}
+        if (!date) {
+            alert('Please add a date');
+            return;
+        }
 
-        //if (!isFollowUp) {
-        //    setPreviousClaimId("")
-        //}
+        if (claimAmt <= 0) {
+            alert('Please enter positive claimAmt');
+            return;
+        }
+
+        if (!currency) {
+            alert('Please fill in currency');
+            return;
+        }
 
         formReturn({
-            firstName,
-            lastName,
             date,
             claimAmt,
             currency,
             purpose
         });
-        if (date && claimAmt && currency && purpose) {
-        console.log({
-            firstName,
-            lastName,
-            date,
-            claimAmt,
-            currency,
-            purpose
-        })
-        setFirstName('');
-        setLastName('');
+
         setDate('');
         setClaimAmt(0);
-        setCurrency('');
+        setCurrency(defaultOption);
         setPurpose('');
-        } else {
-            alert('Please fill in all blanks!')
-        }
-        //setIsFollowUp(false);
-        //setPreviousClaimId('');
-        
-     
-        // setPersons(persons.concat(personObject.data))
 
     }
 
     return (
         <form className='add-form' onSubmit={onSubmit}>
-            <div className='form-control'>
-                <label>First name</label>
-                <input
-                    type='text'
-                    placeholder='Add first name'
-                    value={firstName}
-                    onChange={(e) => setFirstName(e.target.value)}
-                />
-            </div>
-            <div className='form-control'>
-                <label>Last name</label>
-                <input
-                    type='text'
-                    placeholder='Add last name'
-                    value={lastName}
-                    onChange={(e) => setLastName(e.target.value)}
-                />
-            </div>
             <div className='form-control form-control-check'>
                 <label>Date</label>
                 <input
@@ -145,8 +120,33 @@ const ModalForm = ({ formReturn }) => {
             }
  */
 
+/*
+            <div className='form-control'>
+                <label>First name</label>
+                <input
+                    type='text'
+                    placeholder='Add first name'
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                />
+            </div>
+            <div className='form-control'>
+                <label>Last name</label>
+                <input
+                    type='text'
+                    placeholder='Add last name'
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
+                />
+            </div>
+ */
+
 ModalForm.defaultProps = {
-    formReturn: () => { }
+    formReturn: () => { },
+    defaultDate: '',
+    defaultClaimAmt: 0,
+    defaultCurrency: '',
+    defaultPurpose: ''
 }
 
 export default ModalForm
