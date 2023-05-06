@@ -3,7 +3,7 @@ import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import './ModalForm.css';
 
-const ModalForm = ({ formReturn, setClaims}) => {
+const ModalForm = ({ formReturn }) => {
 
     const [firstName, setFirstName] = useState(""); //To fill default value from API
     const [lastName, setLastName] = useState(""); //To fill default value from API
