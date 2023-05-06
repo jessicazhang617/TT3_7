@@ -1,0 +1,13 @@
+const express = require("express");
+const router = express.Router();
+const claims = require("../services/claimsController");
+
+// a route that returns all the accounts
+router.getPendingTable("/pending", async function (req, res, next) {
+  try {
+    res.json(await claims.getPending(req.query.page));
+  } catch (err) {
+    console.error(`Error while getting pending table:`, err.message);
+    next(err);
+  }
+});
