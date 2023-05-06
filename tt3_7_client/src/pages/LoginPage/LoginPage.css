@@ -9,6 +9,7 @@
 
 .LoginPage h1 {
     font-size: 3rem;
+    background: none;
 }
 
 .LoginPage .image {

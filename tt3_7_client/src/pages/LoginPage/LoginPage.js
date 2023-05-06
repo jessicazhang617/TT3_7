@@ -15,7 +15,7 @@ const LoginPage = () => {
 
     setFormDetails({
         ...formDetails,
-        [name]: [value]
+        [name]: value
     });
 
     e.target.value = value;
@@ -24,9 +24,11 @@ const LoginPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrorMessage('');
-
-    if (!formDetails.id && !formDetails.password) {
+    console.log({formDetails});
+    if (!formDetails.id || !formDetails.password) {
+        console.log('qwewq');
         setErrorMessage('Fields cannot be empty');
+        return;
     }
     console.log(`Successfully submitted: id: ${formDetails.id} 
     password: ${formDetails.password}`);
