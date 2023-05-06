@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from "cors";
+import authRouter from './routes/SQL_auth.js'
 
 const app = express();
 const port=process.env.port||5000; 
@@ -12,7 +13,7 @@ const corsOptions ={
  }
 
  app.use(cors(corsOptions));
- app.use('/nodejs/',SQLrouter);
+ app.use('/auth',authRouter);
 
 app.get('/', (req, res) => {
     res.send('Server is working');
