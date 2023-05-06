@@ -1,8 +1,17 @@
 import logo from './logo.svg';
 import './App.css';
 import Button from './components/Button/Button'
+import ClaimsTable from './components/HomePage/ClaimsTable/ClaimsTable'
 
 function App() {
+
+  const info = {
+    status: 'Approved',
+    project_id: 1,
+    claim_id: 1,
+    currency: 'SGD'
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -19,6 +28,7 @@ function App() {
           Learn React
         </a>
         <Button buttonText='Submit'/>
+        <ClaimsTable {...info}/>
       </header>
     </div>
   );
