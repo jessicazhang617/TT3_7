@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
+import './ModalForm.css';
 
 const ModalForm = ({ formReturn }) => {
 
@@ -129,5 +130,9 @@ const ModalForm = ({ formReturn }) => {
             </div>
             }
  */
+
+ModalForm.defaultProps = {
+    formReturn: () => { }
+}
 
 export default ModalForm
