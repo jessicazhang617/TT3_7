@@ -12,3 +12,6 @@ router.post('add/')
 router.delete('/delete/:claimID');
 
 
+export default router; 
+
+
