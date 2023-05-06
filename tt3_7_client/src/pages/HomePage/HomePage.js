@@ -3,16 +3,15 @@ import './HomePage.css'
 import Button from '../../components/Button/Button'
 import ModalForm from '../../components/HomePage/ModalForm'
 import {useState, useEffect} from 'react'
+import NavBar from "../../components/NavBar/NavBar"
+
+
 
 const HomePage = () => {
-    const [isModalOpen, setIsModalOpen] = useState(false)
-
-    const toggleCreateForm = () => {
-        setIsModalOpen(true)
-        console.log(isModalOpen)
-    }
 
   return (
+    <>
+    <NavBar/>
     <div>
     <ClaimsTable currStatus='Pending'/>
     <ClaimsTable currStatus='Accepted'/>
@@ -20,6 +19,7 @@ const HomePage = () => {
     <Button className='createClaim' buttonText='Create Claim' onClick={()=>toggleCreateForm()}/>
     {isModalOpen && <ModalForm/>}
   </div>
+  </>
   )
 }
 

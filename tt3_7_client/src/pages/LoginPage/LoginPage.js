@@ -1,11 +1,19 @@
 import { useState } from 'react';
 import './LoginPage.css';
+import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { UserContext } from '../../context/user.context';
+import axios from 'axios';
 
 const LoginPage = () => {
   const [formDetails, setFormDetails] = useState({
     id: '',
     password: ''
   });
+
+  const {user, setUser} = useContext(UserContext);
+
+  const navigate = useNavigate();
 
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -21,17 +29,38 @@ const LoginPage = () => {
     e.target.value = value;
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setErrorMessage('');
-    console.log({formDetails});
+  const validate = (formDetails) => {
     if (!formDetails.id || !formDetails.password) {
         console.log('qwewq');
         setErrorMessage('Fields cannot be empty');
-        return;
+        return false;
     }
-    console.log(`Successfully submitted: id: ${formDetails.id} 
-    password: ${formDetails.password}`);
+    return true;
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setErrorMessage('');
+
+    async function login() {
+      try {
+          const response = await axios.post('http://localhost:5000/auth', {
+            employeeid:formDetails.id,
+            password:formDetails.password   
+          });
+          if (!response.data.length) {
+            setErrorMessage('Invalid credentials');
+            throw new Error('Invalid credentials');
+          }; 
+          const user = response.data[0];
+          setUser(user);
+          navigate('/home')
+
+      } catch (err) {
+          console.error('Failed to login', err);
+      }
+    }
+    login();
   }
 
 
@@ -52,7 +81,10 @@ const LoginPage = () => {
                 errorMessage &&
                 <span className='error_message'>{errorMessage}</span>
             }
-            <button onClick={handleSubmit} className='submit_button'>Submit</button>
+            <div className='button_section'>
+                <button onClick={handleSubmit} className='submit_button'>Submit</button>
+            </div>
+
         </div>
 
     </div>
