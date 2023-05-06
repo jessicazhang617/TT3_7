@@ -4,6 +4,7 @@ import ClaimsTable from './components/HomePage/ClaimsTable/ClaimsTable'
 import LoginPage from './pages/LoginPage/LoginPage';
 import { Routes, Route } from 'react-router';
 import HomePage from './pages/HomePage/HomePage';
+import { UserContextProvider } from './context/user.context';
 
 function App() {
 
@@ -16,12 +17,12 @@ function App() {
 
   return (
     <div className="App">
-
-      <Routes>
-        <Route path="/" element={<LoginPage />} />
-        <Route path="/home" element={<HomePage />} />
-      </Routes>
-
+      <UserContextProvider>
+        <Routes>
+          <Route path="/" element={<LoginPage />} />
+          <Route path="/home" element={<HomePage />} />
+        </Routes>
+      </UserContextProvider>
     </div>
   );
 }
