@@ -1,11 +1,11 @@
 import express from 'express';
-import { } from '../controllers/SQL_claims.js';
+import {getApproved, getPending, getRejected } from '../controllers/SQL_claims.js';
 
 const router=express.Router(); 
 
-router.get('/approved/:employeeID'); 
-router.get('/pending/:employeeID');
-router.get('/rejected/:employeeID');
+router.get('/approved/:employeeID', getApproved); 
+router.get('/pending/:employeeID', getPending);
+router.get('/rejected/:employeeID', getRejected);
 
 router.post('/edit/'); 
 router.post('add/')
