@@ -3,6 +3,8 @@ import Button from './components/Button/Button'
 import ClaimsTable from './components/HomePage/ClaimsTable/ClaimsTable'
 import LoginPage from './pages/LoginPage/LoginPage';
 import { Routes, Route } from 'react-router';
+import HomePage from './pages/HomePage/HomePage';
+
 function App() {
 
   const info = {
@@ -17,6 +19,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<LoginPage />} />
+        <Route path="/home" element={<HomePage />} />
       </Routes>
 
     </div>
