@@ -6,7 +6,7 @@ import LoginPage from './pages/LoginPage/LoginPage';
 function App() {
 
   const info = {
-    status: 'Approved',
+    status: 'Accepted',
     project_id: 1,
     claim_id: 1,
     currency: 'SGD'
@@ -16,6 +16,7 @@ function App() {
     <div className="App">
 
       <LoginPage />
+      <ClaimsTable {...info}/>
 
     </div>
   );

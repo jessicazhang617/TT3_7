@@ -1,6 +1,6 @@
 import './ClaimsTable.css'
 import Button from '../../Button/Button'
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 
 
 
@@ -14,20 +14,25 @@ const ClaimsTable = (props) => {
         } else {
             setIfAccepted(false);
         }
-    
     }
+
+    useEffect(() => {
+       HandleState() 
+    }, [])
+
 
     return (
         <div class={props.status}>
             <h1>{props.status}</h1>
+            {ifAccepted && <Button classname='edit' buttonText='Edit'/>}
+                {ifAccepted && <Button classname='delete' buttonText='Delete'/> }
             <span>
                 <ul>
-                <li>Project id: {props.project_id}
-                    <Button classname='edit' buttonText='Edit'/>
-                    <Button classname='delete' buttonText='Delete'/>
-                    </li>
-                <li>Claim id: {props.claim_id}</li>
-                <li>Currency: {props.currency}</li>
+                <li>Project id: {props.project_id}</li>
+                <li>Claim id: {props.claim_id}
+                </li>
+                <li>Currency: {props.currency}
+                </li>
                 </ul>
             </span>
         </div>
