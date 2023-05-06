@@ -6,6 +6,8 @@ import {useState, useEffect} from 'react'
 
 const ClaimsTable = ({currStatus}) => {
 
+    const [claims, setClaims] = useState([])
+
     const data = [
         {   
             project_id: 1,
@@ -19,12 +21,24 @@ const ClaimsTable = ({currStatus}) => {
         }
         
     ]
-    const status = currStatus
+
+    useEffect(() => {
+        setClaims(data);
+     }, [])
+
+    const toggleDelete = (project_id) => {
+        if (window.confirm(`Delete claim ${project_id}?`)) {
+        const updatedClaims = claims.filter(claims => claims.project_id !== project_id)
+        setClaims(updatedClaims)
+        console.log('toggledelete ran')
+    }
+    }
+
 
     return (
         <div className='ClaimsTable'>
             <h1>{currStatus}</h1>
-            {data.map(data => <Claims status={currStatus} data={data}/>)}
+            {claims.map(claims => <Claims status={currStatus} data={claims} toggleDelete={toggleDelete}/>)}
         </div>
 
     )
