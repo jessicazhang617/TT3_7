@@ -9,18 +9,19 @@ import NavBar from "../../components/NavBar/NavBar"
 
 const HomePage = () => {
 
-    const [isModalOpen, setModalIsOpen] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false)
+
     const toggleCreateForm = () => {
-        setModalIsOpen(!isModalOpen)
+        setIsModalOpen(true)
     }
 
   return (
     <>
     <NavBar/>
     <div>
-    <ClaimsTable currStatus='Pending'/>
-    <ClaimsTable currStatus='Accepted'/>
-    <ClaimsTable currStatus='Rejected'/>
+    <ClaimsTable currStatus='pending'/>
+    <ClaimsTable currStatus='accepted'/>
+    <ClaimsTable currStatus='rejected'/>
     <Button className='createClaim' buttonText='Create Claim' onClick={()=>toggleCreateForm()}/>
     {isModalOpen && <ModalForm/>}
   </div>
