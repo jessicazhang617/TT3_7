@@ -3,6 +3,6 @@ import { getEmployee } from '../controllers/SQL_auth.js';
 
 const router=express.Router();
 
-router.get('/:employeeId',getEmployee);
+router.post('/',loginEmployee);
 
 export default router;
