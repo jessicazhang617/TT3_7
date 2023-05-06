@@ -1,11 +1,14 @@
 import './ClaimsTable.css'
 import Claims from '../Claims/Claims'
-import {useState, useEffect} from 'react'
+import {useState, useEffect, useContext} from 'react'
+import axios from 'axios'
+import { UserContext } from '../../../context/user.context'
 
 
 const ClaimsTable = ({currStatus}) => {
 
     const [claims, setClaims] = useState([])
+    const [user] = useContext(UserContext)
 
     const data = [
         {   
@@ -21,8 +24,20 @@ const ClaimsTable = ({currStatus}) => {
         
     ]
 
+    const fetchData = async () => { 
+        try {
+            const testdata = await axios.get(`/claims/${currStatus}/${user.EmployeeID}`)
+            // setClaims(data)
+            console.log(testdata)
+        }catch(error) {
+            console.log(error)
+        }
+    }
+
+
     useEffect(() => {
-        setClaims(data);
+        // fetchData();
+        setClaims(data)
      }, [])
 
     const toggleDelete = (claim_id) => {
@@ -34,6 +49,7 @@ const ClaimsTable = ({currStatus}) => {
 
 
     return (
+
         <div className='ClaimsTable'>
             <h1>{currStatus}</h1>
             {claims.map(claims => <Claims status={currStatus} data={claims} toggleDelete={toggleDelete}/>)}
