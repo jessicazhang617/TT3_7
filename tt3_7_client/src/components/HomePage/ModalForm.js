@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const ModalForm = () => {
+const ModalForm = ({ formReturn }) => {
 
     const [firstName, setFirstName] = useState(""); //To fill default value from API
     const [lastName, setLastName] = useState(""); //To fill default value from API
@@ -10,6 +10,40 @@ const ModalForm = () => {
     const [purpose, setPurpose] = useState(""); //To fill default value from API
     const [isFollowUp, setIsFollowUp] = useState(false); //To fill default value from API
     const [previousClaimId, setPreviousClaimId] = useState(""); //To fill default value from API
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+
+        //if (!text) {
+        //    alert('Please add a task');
+        //    return;
+        //}
+
+        if (!isFollowUp) {
+            setPreviousClaimId("")
+        }
+
+        formReturn({
+            firstName,
+            lastName,
+            date,
+            claimAmt,
+            currency,
+            purpose,
+            isFollowUp,
+            previousClaimId
+        });
+
+        setFirstName('');
+        setLastName('');
+        setDate('');
+        setClaimAmt(0);
+        setCurrency('');
+        setPurpose('');
+        setIsFollowUp(false);
+        setPreviousClaimId('');
+
+    }
 
     return (
         <form className='add-form' onSubmit={onSubmit}>
