@@ -1,7 +1,7 @@
 //import personService from '../services/persons'
 //import Notification from './Notification';
 import { useState } from 'react'
-import Field from './Field';
+//import Field from './Field';
 
 const ModalForm = ({ newName, newNumber, persons, setNewName, setNewNumber, setPersons }) => {
 
@@ -114,8 +114,8 @@ const ModalForm = ({ newName, newNumber, persons, setNewName, setNewNumber, setP
                 <input
                     type='number'
                     placeholder='Add claim amount'
-                    value={claimAmt}
-                    onChange={(e) => setClaimAmt(e.target.value)}
+                    value={currency}
+                    onChange={(e) => setCurrency(e.target.value)}
                 />
             </div>
             <div className='form-control form-control-check'>
