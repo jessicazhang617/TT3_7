@@ -18,7 +18,7 @@ const ClaimsTable = (props) => {
     }
 
     return (
-        <div class={props.status}>
+        <div className='ClaimsTable'>
             <h1>{props.status}</h1>
             <span>
                 <ul>

@@ -8,17 +8,17 @@
 
 }
 
-span {
+.ClaimsTable span {
     background-color: white;
 }
 
-h1 {
+.ClaimsTable h1 {
     padding: 1rem;
     background-color: red;
     font-size: 1.5rem;
 }
 
-li {
+.ClaimsTable li {
     text-align: left;
     color: black;
     font-size: 1rem;

@@ -27,6 +27,7 @@ const LoginPage = () => {
 
     if (!formDetails.id && !formDetails.password) {
         setErrorMessage('Fields cannot be empty');
+        return;
     }
     console.log(`Successfully submitted: id: ${formDetails.id} 
     password: ${formDetails.password}`);
