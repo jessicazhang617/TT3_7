@@ -24,15 +24,15 @@ const ClaimsTable = ({currStatus}) => {
         
     ]
 
-    const fetchData = async () => { 
-        try {
-            const testdata = await axios.get(`/claims/${currStatus}/${user.EmployeeID}`)
-            // setClaims(data)
-            console.log(testdata)
-        }catch(error) {
-            console.log(error)
-        }
-    }
+    // const fetchData = async () => { 
+    //     try {
+    //         const testdata = await axios.get(`/claims/${currStatus}/${user.EmployeeID}`)
+    //         // setClaims(data)
+    //         console.log(testdata)
+    //     }catch(error) {
+    //         console.log(error)
+    //     }
+    // }
 
 
     useEffect(() => {
