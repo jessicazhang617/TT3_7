@@ -149,6 +149,7 @@ CREATE TABLE `ProjectExpenseClaims` (
   `AlternativeDeptCode` varchar(50) NOT NULL,
   `Status` varchar(20) NOT NULL,
   `LastEditedClaimDate` datetime NOT NULL,
+  `Delete_flag` bit(1) default 0,
   PRIMARY KEY (`ClaimID`),
   KEY `EmployeeID` (`EmployeeID`),
   KEY `ProjectID` (`ProjectID`),
