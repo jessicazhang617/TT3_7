@@ -11,12 +11,18 @@ const ClaimsTable = ({currStatus}) => {
         {   
             project_id: 1,
             claim_id: 1,
-            currency: 'SGD'
+            currency: 'SGD',
+            claimAmt: 100,
+            date: '06/05/2023 04:18 pm',
+            purpose: 'transport'
         },
         {
             project_id: 2,
             claim_id: 2,
-            currency: 'HKD'
+            currency: 'HKD',
+            claimAmt: 100,
+            date: '06/05/2023 04:18 pm',
+            purpose: 'transport'
         }
         
     ]
