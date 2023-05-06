@@ -16,6 +16,7 @@ const corsOptions ={
  app.use(cors(corsOptions));
  app.use('/auth',authRouter);
  app.use('/claims',claimsRouter);
+ app.use(express.json());
 
 
 app.get('/', (req, res) => {

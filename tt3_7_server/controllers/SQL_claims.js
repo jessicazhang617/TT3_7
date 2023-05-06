@@ -54,3 +54,39 @@ export function getRejected(req,res){
         res.send(result);
     });
 }
+
+export function deleteClaim(req,res){
+  let form=req.body; 
+  let sql=` \
+  update projectexpenseclaims
+  set Delete_flag = 1
+  where claimid = '${form.claimid}';`;
+  
+  db.query(sql, (err, result) => {
+      if (err) throw err;
+      res.send(result);
+  });
+}
+
+export function editClaim(req,res){
+  let form=req.body; 
+  let sql=` \
+  update projectexpenseclaims \
+  set ProjectID='${form.projectid}', \
+  EmployeeID='${form.employeeid}', \
+  CurrencyID=currencyid, \
+  ExpenseDate=expensedate, \
+  Amount=amount, \
+  Purpose=purpose, \
+  ChargeToDefaultDept=0, \
+  AlternativeDeptCode=null, \
+  Status=’Pending’, \
+  LastEditedClaimDate='${LastEditedClaimDate,toLocaleString()}', \
+  Delete_flag=0 \
+  where claimid = '${form.claimid}';`;
+  
+  db.query(sql, (err, result) => {
+      if (err) throw err;
+      res.send(result);
+  });
+}
