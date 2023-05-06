@@ -2,13 +2,16 @@ import { useState } from 'react'
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import './ModalForm.css';
+import Modal from 'react-modal';
 
 const ModalForm = ({
     formReturn,
     defaultDate,
     defaultClaimAmt,
     defaultCurrency,
-    defaultPurpose
+    defaultPurpose,
+    title,
+    buttonText
 }) => {
 
 
@@ -20,9 +23,10 @@ const ModalForm = ({
     const [purpose, setPurpose] = useState(defaultPurpose); //To fill default value from API
     //const [isFollowUp, setIsFollowUp] = useState(false); //To fill default value from API
     //const [previousClaimId, setPreviousClaimId] = useState(""); //To fill default value from API
+    const [modalIsOpen, setModalIsOpen] = useState(true);
 
     const currencyOptions = ['CNY', 'HKD', 'IDR', 'INR', 'JPY', 'KHR', 'KRW', 'SGD', 'TWD', 'VND']
-    const defaultOption = currencyOptions[0]
+    const defaultOption = 'SGD'
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -54,14 +58,20 @@ const ModalForm = ({
         setCurrency(defaultOption);
         setPurpose('');
 
+
     }
 
     return (
+        <Modal
+            isOpen={modalIsOpen}
+            onRequestClose={() => setModalIsOpen(false)}
+            contentLabel="Example Modal"
+        >
         <form className='add-form' onSubmit={onSubmit}>
             <div className='form-control form-control-check'>
                 <label>Date</label>
                 <input
-                    type='text'
+                    type='datetime-local'
                     placeholder='Add date'
                     value={date}
                     onChange={(e) => setDate(e.target.value)}
@@ -93,8 +103,10 @@ const ModalForm = ({
                     onChange={(e) => setPurpose(e.target.value)}
                 />
             </div>
-            <input type='submit' value='Submit' className='btn btn-block' />
-        </form>
+                <input type='submit' value={buttonText} className='btn btn-block' />
+                <button onClick={() => setModalIsOpen(false)} className='btn btn-block'>Close</button>
+            </form>
+        </Modal>
     )
 }
 
@@ -145,8 +157,10 @@ ModalForm.defaultProps = {
     formReturn: () => { },
     defaultDate: '',
     defaultClaimAmt: 0,
-    defaultCurrency: '',
-    defaultPurpose: ''
+    defaultCurrency: 'SGD',
+    defaultPurpose: '',
+    title: 'Add claims',
+    buttonText: 'Submit'
 }
 
 export default ModalForm
