@@ -9,10 +9,9 @@ const Claims = ({ status, data, toggleDelete }) => {
 
     return (
         <div className='Claims'>
-       
             <div>
-            {status !== 'accepted' && <Button classname='edit' buttonText='Edit'/>}
-            {status !== 'accepted' && <Button classname='delete' buttonText='Delete' onClick={() => toggleDelete(data.project_id)}/> }
+                {status !== 'accepted' && <Button classname='edit' buttonText='Edit' onClick={() => setModalIsOpen(!isModalOpen)}/>}
+                {status !== 'accepted' && <Button classname='delete' buttonText='Delete' onClick={() => toggleDelete(data.project_id)}/> }
                 <span>Project id: {data.project_id}</span>
                 <span>Claim id: {data.claim_id}</span>
                 <span>Currency: {data.currency}</span>
@@ -21,16 +20,13 @@ const Claims = ({ status, data, toggleDelete }) => {
             {isModalOpen && <ModalForm
                 defaultDate={data.date}
                 defaultClaimAmt={data.claimAmt}
-                defaultPurpose={ data.purpose }
+                defaultPurpose={data.purpose}
                 defaultCurrency={data.currency}
                 title='Edit claims'
                 claimID={data.claim_id}
             />}
 
     </div>
-
     )
-
-
 }
 export default Claims
