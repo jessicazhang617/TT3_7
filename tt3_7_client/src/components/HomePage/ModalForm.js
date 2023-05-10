@@ -12,19 +12,16 @@ const ModalForm = ({
     defaultPurpose,
     title,
     buttonText,
-    claimID
+    claimID,
+    modalIsOpen,
+    setModalIsOpen
 }) => {
 
 
-    //const [firstName, setFirstName] = useState(""); //To fill default value from API
-    //const [lastName, setLastName] = useState(""); //To fill default value from API
     const [date, setDate] = useState(defaultDate); //To fill default value from API
     const [claimAmt, setClaimAmt] = useState(defaultClaimAmt); //To fill default value from API
     const [currency, setCurrency] = useState(defaultCurrency); //To fill default value from API
     const [purpose, setPurpose] = useState(defaultPurpose); //To fill default value from API
-    //const [isFollowUp, setIsFollowUp] = useState(false); //To fill default value from API
-    //const [previousClaimId, setPreviousClaimId] = useState(""); //To fill default value from API
-    const [modalIsOpen, setModalIsOpen] = useState(true);
 
     const currencyOptions = ['CNY', 'HKD', 'IDR', 'INR', 'JPY', 'KHR', 'KRW', 'SGD', 'TWD', 'VND']
     const defaultOption = 'SGD'
@@ -53,12 +50,13 @@ const ModalForm = ({
             currency,
             purpose
         });
-
+        
         setDate('');
         setClaimAmt(0);
         setCurrency(defaultOption);
         setPurpose('');
 
+        setModalIsOpen(false);
 
     }
 
@@ -112,49 +110,6 @@ const ModalForm = ({
         </Modal>
     )
 }
-
-/* Removed followup
-            <div className='form-control form-control-check'>
-                <label>Is follow up claim?</label>
-                <input
-                    type='checkbox'
-                    checked={isFollowUp}
-                    value={isFollowUp? 'yes' : 'no'}
-                    onChange={(e) => setIsFollowUp(e.currentTarget.checked)}
-                />
-            </div>
-            {isFollowUp && <div className='form-control form-control-check'>
-                <label>Previous claim ID</label>
-                <input
-                    type='text'
-                    placeholder='Add previous claim id'
-                    value={previousClaimId}
-                    onChange={(e) => setPreviousClaimId(e.target.value)}
-                />
-            </div>
-            }
- */
-
-/*
-            <div className='form-control'>
-                <label>First name</label>
-                <input
-                    type='text'
-                    placeholder='Add first name'
-                    value={firstName}
-                    onChange={(e) => setFirstName(e.target.value)}
-                />
-            </div>
-            <div className='form-control'>
-                <label>Last name</label>
-                <input
-                    type='text'
-                    placeholder='Add last name'
-                    value={lastName}
-                    onChange={(e) => setLastName(e.target.value)}
-                />
-            </div>
- */
 
 ModalForm.defaultProps = {
     formReturn: () => { },

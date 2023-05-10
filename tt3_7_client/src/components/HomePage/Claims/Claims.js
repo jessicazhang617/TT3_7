@@ -1,6 +1,6 @@
 import './Claims.css'
 import Button from '../../Button/Button'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import ModalForm from '../ModalForm'
 
 const Claims = ({ status, data, toggleDelete }) => {
@@ -15,6 +15,9 @@ const Claims = ({ status, data, toggleDelete }) => {
                 <span>Project id: {data.project_id}</span>
                 <span>Claim id: {data.claim_id}</span>
                 <span>Currency: {data.currency}</span>
+                <span>Date: {data.date}</span>
+                <span>Claim amount: {data.claimAmt}</span>
+                <span>Purpose: {data.purpose}</span>
             </div>
 
             {isModalOpen && <ModalForm
@@ -24,6 +27,8 @@ const Claims = ({ status, data, toggleDelete }) => {
                 defaultCurrency={data.currency}
                 title='Edit claims'
                 claimID={data.claim_id}
+                modalIsOpen={isModalOpen}
+                setModalIsOpen={setModalIsOpen}
             />}
 
     </div>
