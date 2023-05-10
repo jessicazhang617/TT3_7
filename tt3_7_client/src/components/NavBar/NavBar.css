@@ -1,0 +1,37 @@
+ç.NavBar {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+.welcome {
+    font-size: 2rem;
+    text-align: start;
+}
+
+
+.logout {
+    height: 4rem;
+    color: white;
+    background-color: black;
+    border: none;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    width: 12rem;
+}
+
+.logout:hover {
+    cursor: pointer;
+    background-color: rgb(102, 33, 33);
+}
+
+
+.nav_content{
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    gap: 1.6rem;
+    margin-right: 2rem;
+}
